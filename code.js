@@ -7,9 +7,16 @@
         })
         .then (data => {
             const results = data.results;
-            return results
+            const selectedNumber = randomNumber();
+            console.log(results[selectedNumber]);
         })
 
-        
+        function randomNumber () {
+            const selectedNumber = Math.floor(Math.random() * 231);
+            return selectedNumber;
+        }
+
+        randomNumber();
+
 
 }
