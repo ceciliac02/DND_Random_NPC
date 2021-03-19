@@ -18,7 +18,8 @@
             const index = results[selectedNumber].index;
             displayRace(results[selectedNumber].name);
             let height = heightModifier(index);
-            displayHeight(height);       
+            displayHeight(height); 
+            displayGender(genderModifier());      
         })
 
         //Rolls for a random number for the race index
@@ -51,19 +52,19 @@
                     heightFeet = 4;
                 }
             }
-            if (race === "gnome" || race === "halfling") {
+            else if (race === "gnome" || race === "halfling") {
                 heightFeet = Math.floor(Math.random() * 3) + 1;
                 if (heightFeet < 3) {
                     heightFeet = 3;
                 }
             }
-            if (race === "elf" || race === "human" || race === "half-elf") {
+            else if (race === "elf" || race === "human" || race === "half-elf") {
                 heightFeet = Math.floor(Math.random() * 5) + 1;
                 if (heightFeet < 5) {
                     heightFeet = 5;
                 }
             }
-            if (race === "half-orc" || race === "dragonborn") {
+            else if(race === "half-orc" || race === "dragonborn") {
                 heightFeet = Math.floor(Math.random() * 6) + 1;
                 if (heightFeet < 6) {
                     heightFeet = 6;
@@ -71,6 +72,39 @@
             }
             height = heightFeet + "'" + heightInches + "\"";
             return height;
+        }
+
+        //Lists the gender of the NPC
+        function displayGender (gender) {
+            const list = document.createElement("LI");
+            const textNode = document.createTextNode(gender);
+            list.appendChild(textNode);
+            prop[0].appendChild(list);
+        }
+
+       //Modifies the gender of the NPC
+        function genderModifier () {
+            let gender;
+            const number = Math.floor(Math.random() * 600) + 1;
+            if (number < 200) {
+                gender = "female";
+            }
+            else if (number > 200 && number < 400) {
+                gender = "male";
+            }
+            else if (number > 400 && number < 450) {
+                gender = "non-binary";
+            }
+            else if (number > 450 && number < 500) {
+                gender = "trans-male";
+            }
+            else if (number > 500 && number < 550) {
+                gender = "trans-female";
+            }
+            else {
+                gender = "genderfluid";
+            }
+            return gender;
         }
         
 
