@@ -32,17 +32,20 @@
             const height = heightModifier(race);
             //
             const gender = genderModifier();
+            //
+            const hairHeight = hairHeightModifier(race);
             //Sets the attributes for the new random NPC instance
-            let randomNPC = new NPC(race, height, gender);
+            let randomNPC = new NPC(race, height, gender, hairHeight);
             console.log(randomNPC);
-            console.log(heightModifier("Human"));
+            console.log(raceIndex);
         })
 
         //Randomizes a number based on the number of races available
         const randomRace = racesCount => {
-            return Math.floor(Math.random() * (racesCount + 1));
+            return Math.floor(Math.random() * (racesCount));
         }
 
+        //Randomizes a height based on the race
         function heightModifier (race) {
             let heightFeet;
             let heightInches = Math.floor(Math.random() * 10) + 1;
@@ -59,7 +62,7 @@
                     heightFeet = 3;
                 }
             }
-            else if (race === "Elf" || race === "Human" || race === "Half-Elf") {
+            else if (race === "Elf" || race === "Human" || race === "Half-Elf" || race === "Tiefling") {
                 heightFeet = Math.floor(Math.random() * 5) + 1;
                 if (heightFeet < 5) {
                     heightFeet = 5;
@@ -75,6 +78,7 @@
             return height;
         }
 
+        //Randomizes a gender
         function genderModifier () {
             let gender;
             const number = Math.floor(Math.random() * 500) + 1;
@@ -91,6 +95,27 @@
                 gender = "genderfluid";
             }
             return gender;
+        }
+
+        function hairHeightModifier (race) {
+            if (race === "Dragonborn") {
+                return null;
+            }
+            else {
+                const randomNumber = Math.floor(Math.random() * 3);
+                console.log(randomNumber);
+                switch (randomNumber) {
+                    case 0: 
+                        return "short";
+                        break;
+                    case 1:
+                        return "medium-length";
+                        break;
+                    case 2:
+                        return "long";
+                        break;
+                }
+            }
         }
 
 
