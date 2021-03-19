@@ -34,8 +34,10 @@
             const gender = genderModifier();
             //
             const hairHeight = hairHeightModifier(race);
+            const hairColor = hairColorModifier(race);
+            const hair = hairHeight + " " + hairColor + " hair";
             //Sets the attributes for the new random NPC instance
-            let randomNPC = new NPC(race, height, gender, hairHeight);
+            let randomNPC = new NPC(race, height, gender, hair);
             console.log(randomNPC);
             console.log(raceIndex);
         })
@@ -115,6 +117,17 @@
                         return "long";
                         break;
                 }
+            }
+        }
+
+        function hairColorModifier (race) {
+            if (race === "Dragonborn") {
+                return null;
+            }
+            else {
+                let hairColors = ["auburn", "brown", "black", "red", "white", "gray", "blonde", "teal", "green", "purple", "lilac", "maroon", "silver", "navy", "pink"];
+                const randomNumber = Math.floor(Math.random() * hairColors.length);
+                return hairColors[randomNumber];
             }
         }
 
