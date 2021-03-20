@@ -28,18 +28,20 @@
             //Grabs a race index from the api through a random number
             const raceIndex = randomRace(results.length);
             const race = results[raceIndex].name;
-            //
+            //Sets the height
             const height = heightModifier(race);
-            //
+            //Sets the gender
             const gender = genderModifier();
-            //
+            //Sets the hair
             const hairHeight = hairHeightModifier(race);
             const hairColor = hairColorModifier(race);
             const hair = hairHeight + " " + hairColor + " hair";
-            //
+            //Sets the skin color
             const skinColor = skinColorModifier(race);
+            //Sets the first trait of the NPC
+            const traitOne = adjectives();
             //Sets the attributes for the new random NPC instance
-            let randomNPC = new NPC(race, height, gender, hair, skinColor);
+            let randomNPC = new NPC(race, height, gender, hair, skinColor, traitOne);
             console.log(randomNPC);
             console.log(raceIndex);
         })
@@ -101,6 +103,7 @@
             return gender;
         }
 
+        //Randomizes a hair length
         function hairHeightModifier (race) {
             if (race === "Dragonborn") {
                 return null;
@@ -122,6 +125,7 @@
             }
         }
 
+        //Randomizes a hair color
         function hairColorModifier (race) {
             if (race === "Dragonborn") {
                 return null;
@@ -133,6 +137,7 @@
             }
         }
 
+        //Randomizes a skin tone based on race
         function skinColorModifier (race) {
             let skinColor = ["light", "fair", "beige", "tan", "deep tan", "light-brown", "dark"];
             let randomNumber;
@@ -157,6 +162,13 @@
             }
             randomNumber = Math.floor(Math.random() * skinColor.length);
             return skinColor[randomNumber];
+        }
+
+        function adjectives () {
+            const traits = ["brave", "cowardly", "snippy", "humble", "impatient", "patient", "nosey", "easygoing", "uptight", "funny", "serious", "aggressive", "arrogant", "cheerful", "grumpy", "artistic", "logical", "thick-headed", "daft", "boastful", "bright", "cunning", "calm", "suspicious", "cautious", "charming", "confident", "clever", "considerate", "cool", "cooperative", "wise", "cultured", "stubborn", "deranged", "dignified", "devoted", "eccentric", "emotional", "energetic", "friendly", "gentle", "meek", "modest", "quiet", "rational", "sensitive", "thoughtful", "philosophical","chatty", "level-headed", "perceptive", "dense", "diabolical","innocent", "corrupt", "offensive", "spiteful", "hateful", "wicked"];
+
+            const index = Math.floor(Math.random() * traits.length);
+            return traits[index];
         }
 
 }
