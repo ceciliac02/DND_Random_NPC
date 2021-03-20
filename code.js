@@ -36,8 +36,10 @@
             const hairHeight = hairHeightModifier(race);
             const hairColor = hairColorModifier(race);
             const hair = hairHeight + " " + hairColor + " hair";
+            //
+            const skinColor = skinColorModifier(race);
             //Sets the attributes for the new random NPC instance
-            let randomNPC = new NPC(race, height, gender, hair);
+            let randomNPC = new NPC(race, height, gender, hair, skinColor);
             console.log(randomNPC);
             console.log(raceIndex);
         })
@@ -131,116 +133,30 @@
             }
         }
 
-
-    /*//Gets api data
-    fetch (api) 
-        .then (response => {
-            return response.json();
-        })
-        .then (data => {
-            const results = data.results;
-            //The number of the selected race converted to variable for easier use
-            const selectedNumber = randomRace();
-            //The index of the chosen race
-            const index = results[selectedNumber].index;
-            const race = results[selectedNumber].name;
-            const height = heightModifier(index);
-            const gender = genderModifier();
-            let randomNPC = new NPC(race, height, gender);
-            console.log(randomNPC);
-            displayRace(results[selectedNumber].name);
-            displayHeight(height); 
-            displayGender(gender);      
-        })
-
-        //Rolls for a random number for the race index
-        function randomRace () {
-            const selectedNumber = Math.floor(Math.random() * 8);
-            return selectedNumber;
+        function skinColorModifier (race) {
+            let skinColor = ["light", "fair", "beige", "tan", "deep tan", "light-brown", "dark"];
+            let randomNumber;
+            if (race === "Dragonborn") {
+                skinColor = ["black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"];
+            }
+            else if (race === "Elf" || race === "Half-Elf") {
+                skinColor.push("copper");
+                skinColor.push("bronze");
+                skinColor.push("bluish-white");
+            }
+            else if (race === "Tiefling") {
+                skinColor.push("dark red");
+                skinColor.push("brick red");
+                skinColor.push("purple");
+            }
+            else if (race === "Half-Orc") {
+                skinColor = ["gray", "green"];
+            }
+            else if (race === "Gnome") {
+                skinColor.push("gray");
+            }
+            randomNumber = Math.floor(Math.random() * skinColor.length);
+            return skinColor[randomNumber];
         }
-
-        //Replaces the list text to the selected race
-        function displayRace (name) {
-            race.innerText = name;
-        }
-
-        //Lists the height of the race
-        function displayHeight (height) {
-            const list = document.createElement("LI");
-            const textNode = document.createTextNode(height);
-            list.appendChild(textNode);
-            prop[0].appendChild(list);
-        }
-
-        //Randomizes a height for the race
-        function heightModifier (race) {
-            let heightFeet;
-            let heightInches = Math.floor(Math.random() * 10) + 1;
-            let height;
-            if (race === "dwarf") {
-                heightFeet = Math.floor(Math.random() * 4) + 1;
-                if (heightFeet < 4) {
-                    heightFeet = 4;
-                }
-            }
-            else if (race === "gnome" || race === "halfling") {
-                heightFeet = Math.floor(Math.random() * 3) + 1;
-                if (heightFeet < 3) {
-                    heightFeet = 3;
-                }
-            }
-            else if (race === "elf" || race === "human" || race === "half-elf") {
-                heightFeet = Math.floor(Math.random() * 5) + 1;
-                if (heightFeet < 5) {
-                    heightFeet = 5;
-                }
-            }
-            else if(race === "half-orc" || race === "dragonborn") {
-                heightFeet = Math.floor(Math.random() * 6) + 1;
-                if (heightFeet < 6) {
-                    heightFeet = 6;
-                }
-            }
-            height = heightFeet + "'" + heightInches + "\"";
-            return height;
-        }
-
-        //Lists the gender of the NPC
-        function displayGender (gender) {
-            const list = document.createElement("LI");
-            const textNode = document.createTextNode(gender);
-            list.appendChild(textNode);
-            prop[0].appendChild(list);
-        }
-
-       //Modifies the gender of the NPC
-        function genderModifier () {
-            let gender;
-            const number = Math.floor(Math.random() * 500) + 1;
-            if (number < 200) {
-                gender = "female";
-            }
-            else if (number > 200 && number < 400) {
-                gender = "male";
-            }
-            else if (number > 400 && number < 450) {
-                gender = "non-binary";
-            }
-            else {
-                gender = "genderfluid";
-            }
-            return gender;
-        }
-
-        function hairModifier (race) {
-            let hairLength;
-            let hairColors = ["auburn", "brown", "black", "red", "white", "gray", "blonde", "teal", "green", "purple", "lilac", "maroon", "silver", "navy", "pink"];
-            
-            length: short, middle, long
-            color: auburn, brown, black, red, white, gray, blonde, teal, 
-            
-        }
-        
-        */
 
 }
