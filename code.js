@@ -6,7 +6,7 @@
     
 
     class NPC {
-        constructor(race, height, gender, hair, skinColor, trait1, trait2, trait3, profession) {
+        constructor(race, height, gender, hair, skinColor, trait1, trait2, trait3, attitude, profession) {
             this.race = race;
             this.height = height;
             this.gender = gender;
@@ -15,6 +15,7 @@
             this.trait1 = trait1;
             this.trait2 = trait2;
             this.trait3 = trait3;
+            this.attitdue = attitude;
             this.profession = profession;
         }
     }
@@ -39,11 +40,17 @@
             //Sets the skin color
             const skinColor = skinColorModifier(race);
             //Sets the first trait of the NPC
-            const traitOne = adjectives();
-            //
-            const traitTwo = quirks();
+            const adjective = adjectives();
+            //Sets the NPC's quirk
+            const quirk = quirks();
+            //Sets the NPC's hobby
+            const hobby = hobbies();
+            //Sets the attitude toward the PC
+            const attitude = attitudeTowardsPC()
+            //Sets their profession
+            const npcProfession = profession();
             //Sets the attributes for the new random NPC instance
-            let randomNPC = new NPC(race, height, gender, hair, skinColor, traitOne, traitTwo);
+            let randomNPC = new NPC(race, height, gender, hair, skinColor, adjective, quirk, hobby, attitude, npcProfession);
             console.log(randomNPC);
             console.log(raceIndex);
         })
@@ -166,6 +173,7 @@
             return skinColor[randomNumber];
         }
 
+        //Randomizes an adjective
         function adjectives () {
             const traits = ["brave", "cowardly", "snippy", "humble", "impatient", "patient", "nosey", "easygoing", "uptight", "funny", "serious", "aggressive", "arrogant", "cheerful", "grumpy", "artistic", "logical", "thick-headed", "daft", "boastful", "bright", "cunning", "calm", "suspicious", "cautious", "charming", "confident", "clever", "considerate", "cool", "cooperative", "wise", "cultured", "stubborn", "deranged", "dignified", "devoted", "eccentric", "emotional", "energetic", "friendly", "gentle", "meek", "modest", "quiet", "rational", "sensitive", "thoughtful", "philosophical","chatty", "level-headed", "perceptive", "dense", "diabolical","innocent", "corrupt", "offensive", "spiteful", "hateful", "wicked", "vain"];
 
@@ -173,8 +181,9 @@
             return traits[index];
         }
 
+        //Randomizes a quirk
         function quirks () {
-            const quirk = ["stutters", "has a lisp", "scarred", "blind", "deaf", "wears glasses", "fidgets", "has piercings", "sick", "talks loudly", "talks quietly", "foul breath", "sweats when lying", "breathes heavily", "talks slowly", "talks quickly", "breaks into song", "carries around a stuffed animal", "always sits facing the north", "clears their throat frequently", "laughs loudly", "sniffs frequently", "paces when in thought", "talks to themselves", "carries around snacks", "handles things delicately", "missing a limb", "carries around books", "sneezes when nervous", "germophobe", "hears voices", "has an invisible friend", "talks to plants", "talk to animals", "always seen drinking tea", "obsessed with symmetry", "narcoleptic", "always seen drinking alcohol", "carries around a sketchbook", "bites lips", "mute", "wears their heart on a sleeve"];
+            const quirk = ["stutters", "has a lisp", "scarred", "blind", "deaf", "wears glasses", "fidgets", "has piercings", "sick", "talks loudly", "talks quietly", "foul breath", "sweats when lying", "breathes heavily", "talks slowly", "talks quickly", "breaks into song", "carries around a stuffed animal", "always sits facing the north", "clears their throat frequently", "laughs loudly", "sniffs frequently", "paces when in thought", "talks to themselves", "carries around snacks", "handles things delicately", "missing a limb", "carries around books", "sneezes when nervous", "germophobe", "hears voices", "has an invisible friend", "talks to plants", "talk to animals", "always seen drinking tea", "obsessed with symmetry", "narcoleptic", "always seen drinking alcohol", "carries around a sketchbook", "bites lips", "mute", "wears their heart on a sleeve", "lazy eye", "bites their nails", "walks around barefoot", "limps", "mumbles", "very punctual", "vegetarian/vegan", "yawns a lot", "picks their nose", "high pitched voice", "low-pitched voice", "nasally voice", "raspy voice", "sonorous voice", "melodic voice", "snorts when laughing", "squints a lot", "talks with their hands", "laughs at their own jokes", "cleans incessantly", "has a catchphrase", "doesn't like eye contact", "likes to talk about their deity"];
             const index = Math.floor(Math.random() * quirk.length);
             if (quirk[index] === "scarred") {
                 let completeQuirk;
@@ -206,5 +215,26 @@
             }
             const quirkIndex = Math.floor(Math.random() * quirk.length);
             return quirk[quirkIndex];
+        }
+
+        //Randomizes a hobby
+        function hobbies () {
+            const hobby = ["likes to read", "likes to draw", "makes jewelry", "journals", "collects trinkets", "plays dragonchess", "studies history", "likes to bake", "likes to cook", "refurnishes old furniture", "likes windowshopping", "plays an instrument", "writes poetry", "likes to play sports", "writes jokes", "loves barfights", "creates experiments", "beekeeps", "tattoos", "creates clothing", "loves to tinker", "likes to decorate", "likes to hike", "likes to swim", "woodcarves", "likes to play card games", "likes to knit", "teaches kids", "likes to gamble", "streetfights", "goes hunting", "likes to flirt", "practices magic", "likes stonecarving", "rides horses", "likes fortune telling", "likes to storytell","makes dolls", "studies the stars", "loves exercising", "loves dancing", "rock climbs", "loves to clean", "reads to children", "meditates"];
+            const randomNumber = Math.floor(Math.random() * hobby.length);
+            return hobby[randomNumber];
+        }
+
+        //Randomizes an attitude
+        function attitudeTowardsPC () {
+            const attitudes = ["hostile", "neutral", "warm", "friendly", "lustful", "scared", "nervous", "shy", "cold", "cynical", "playful", "apathetic", "sweet", "disgusted", "patronzing", "appreciative"];
+            const randomNumber = Math.floor(Math.random() * attitudes.length);
+            return attitudes[randomNumber];
+        }
+
+        //Randomizes a profession
+        function profession () {
+            const professions = ["animal handler", "beekeeper", "farmer", "falconer", "fisher", "forager", "hunter", "horse trainer", "miller", "ranger", "shepherd", "stablehand", "trapper", "woodcutter", "zookeeper", "architect", "acrobat", "carpenter", "stonemason", "actor", "chef", "dancer", "glasspainter", "minstrel", "musician", "painter", "playwright", "poet", "sculptor", "singer", "tattooist", "banker", "brothel owner", "shopkeep", "collector", "guild master", "innkeeper", "peddler", "tradesman", "courier", "herald", "linguist", "messenger", "town crier", "translator", "armorer", "blacksmith", "bookbinder", "bowyer", "brewer", "candlemaker", "cartwright", "engraver", "fletcher", "furniture artisan", "glassmaker", "goldsmith", "hatter", "jeweler", "leatherworker", "locksmith", "tailor", "taxidermist", "tinker", "toymaker", "woodcarver", "assassin", "bandit", "burglar", "cutpurse", "crime boss", "kidnapper", "loan shark", "outlaw", "pirate", "poacher", "smuggler", "thief", "apprentice", "archaeologist", "archivist", "astrologer", "botanist", "cartographer", "chemist", "historian", "librarian", "mathematician", "professor", "scholar", "theologian", "aristocrat", "courtier", "diplomat", "duke/duchess", "baron/baroness", "diplomat", "emperor/empress", "judge", "king/queen", "knight", "noble", "orator", "prince/princess", "steward", "squire", "tax collector", "ward", "alchemist", "apothecary", "doctor", "healer", "midwife", "mortician", "nurse", "surgeon", "veterinarian", "baker", "barkeep", "barmaid", "butcher", "cook", "distiller", "florist", "gardener", "gravedigger", "housemaid", "laborer", "maid/butler", "miner", "sex-worker", "slave", "tavern worker", "vermin catcher", "mage", "necromancer" , "sage", "oracle", "witch", "bodyguard", "bailiff", "captain", "city watch", "investigator", "executioner", "guard", "mercenary", "sentinel", "scout", "soldier", "spy", "tactician", "warden", "acolyte", "archbishop", "bishop", "clergy", "cultist", "cult leader", "priest", "pope", "inqusitor", "missionary", "monk", "prophet", "boatman", "caravaneer", "ferrymen", "sailor", "sea captain", "shipwright", "adventurer", "beggar", "bounty hunter", "deserter", "disgraced noble", "elder", "exile", "traveler", "gambler", "hermit", "housewife/househusband", "pilgrim", "refugee", "urchin", "squatter"];
+            const randomNumber = Math.floor(Math.random() * professions.length);
+            return professions[randomNumber];
         }
 }
