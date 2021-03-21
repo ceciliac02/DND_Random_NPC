@@ -1,12 +1,62 @@
+$accent: rgb(70, 47, 124);
+$textColor: white;
+$boxShadow: 0px 0px 50px black;
 
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: white;
+}
 
-li {
+body {
     display: flex;
-    font-size: 25px;
-    margin: 10px;
-    div {
-        background-color: rgb(151, 146, 223);
-        font-size: 30px;
-        margin-right: 2vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(43, 14, 54);
+}
+
+.banner {
+    padding: 30px;
+    margin: 40px;
+    box-shadow: $boxShadow;
+    color: $textColor;
+    background-color: $accent;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    ul {
+        border: black 2px solid;
+        box-shadow: $boxShadow;
+        li {
+            display: flex;
+            font-size: 25px;
+            margin: 10px;
+            align-items: center;
+            div {
+                background-color: $accent;
+                font-size: 30px;
+                margin-right: 2vh;
+                border: black 2px solid;
+                padding: 3px;
+            }
+        }
+    }
+    button {
+        margin: 20px;
+        padding: 10px;
+        background-color: $accent;
+        color: $textColor;
+        font-weight: bold;
+        font-size: 25px;
+        border: none;
+        box-shadow: $boxShadow;
+        cursor: pointer;
     }
 }
+
+
+
