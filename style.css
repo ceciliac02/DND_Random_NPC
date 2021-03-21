@@ -1,0 +1,14 @@
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 25px;
+  margin: 10px;
+}
+
+li div {
+  background-color: #9792df;
+  font-size: 30px;
+  margin-right: 2vh;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,21 +1,28 @@
 {
     const api = 'https://www.dnd5eapi.co/api/races';
     const prop = document.querySelectorAll(".properties");
-    const lorem = document.getElementById("lorem");
-
-    
+    const raceHTML = document.getElementById("race");
+    const heightHTML = document.getElementById("height");
+    const genderHTML = document.getElementById("gender");
+    const skinHTML = document.getElementById("skinColor");
+    const hairHTML = document.getElementById("hair");
+    const traitOne = document.getElementById("trait1");
+    const traitTwo = document.getElementById("trait2");
+    const traitThree = document.getElementById("trait3");
+    const attitudeHTML = document.getElementById("attitude");
+    const professionHTML = document.getElementById("profession");
 
     class NPC {
-        constructor(race, height, gender, hair, skinColor, trait1, trait2, trait3, attitude, profession) {
+        constructor(race, height, gender, hair, skinColor, adjective, quirk, hobby, attitude, profession) {
             this.race = race;
             this.height = height;
             this.gender = gender;
             this.hair = hair;
             this.skinColor = skinColor;
-            this.trait1 = trait1;
-            this.trait2 = trait2;
-            this.trait3 = trait3;
-            this.attitdue = attitude;
+            this.adjective = adjective;
+            this.quirk = quirk;
+            this.hobby = hobby;
+            this.attitude = attitude;
             this.profession = profession;
         }
     }
@@ -52,8 +59,26 @@
             //Sets the attributes for the new random NPC instance
             let randomNPC = new NPC(race, height, gender, hair, skinColor, adjective, quirk, hobby, attitude, npcProfession);
             console.log(randomNPC);
-            console.log(raceIndex);
+            console.log(displayNPC(randomNPC));
         })
+
+        function displayNPC (npc) {
+            raceHTML.innerHTML += npc.race;
+            heightHTML.innerHTML += npc.height;
+            genderHTML.innerHTML += npc.gender;
+            hairHTML.innerHTML += npc.hair;
+            traitOne.innerHTML += npc.adjective;
+            traitTwo.innerHTML += npc.quirk;
+            traitThree.innerHTML += npc.hobby;
+            attitudeHTML.innerHTML += npc.attitude;
+            professionHTML.innerHTML += npc.profession;
+            if (npc.race === "Dragonborn") {
+                skinHTML.innerHTML += npc.skinColor + " scales"; 
+            }
+            else {
+                skinHTML.innerHTML += npc.skinColor + " skin tone";
+            }
+        }
 
         //Randomizes a number based on the number of races available
         const randomRace = racesCount => {
@@ -186,8 +211,8 @@
             const quirk = ["stutters", "has a lisp", "scarred", "blind", "deaf", "wears glasses", "fidgets", "has piercings", "sick", "talks loudly", "talks quietly", "foul breath", "sweats when lying", "breathes heavily", "talks slowly", "talks quickly", "breaks into song", "carries around a stuffed animal", "always sits facing the north", "clears their throat frequently", "laughs loudly", "sniffs frequently", "paces when in thought", "talks to themselves", "carries around snacks", "handles things delicately", "missing a limb", "carries around books", "sneezes when nervous", "germophobe", "hears voices", "has an invisible friend", "talks to plants", "talk to animals", "always seen drinking tea", "obsessed with symmetry", "narcoleptic", "always seen drinking alcohol", "carries around a sketchbook", "bites lips", "mute", "wears their heart on a sleeve", "lazy eye", "bites their nails", "walks around barefoot", "limps", "mumbles", "very punctual", "vegetarian/vegan", "yawns a lot", "picks their nose", "high pitched voice", "low-pitched voice", "nasally voice", "raspy voice", "sonorous voice", "melodic voice", "snorts when laughing", "squints a lot", "talks with their hands", "laughs at their own jokes", "cleans incessantly", "has a catchphrase", "doesn't like eye contact", "likes to talk about their deity"];
             const index = Math.floor(Math.random() * quirk.length);
             if (quirk[index] === "scarred") {
-                let completeQuirk;
                 let details = ["on the right eye", "on the left eye", "on the right cheek", "on the left cheek", "on the neck", "along their back", "along their arms", "on their torso", "along their legs"];
+                let completeQuirk;
                 const detailsIndex = Math.floor(Math.random() * details.length);
                 completeQuirk = quirk[index] + " " + details[detailsIndex];
                 return completeQuirk;
@@ -219,7 +244,7 @@
 
         //Randomizes a hobby
         function hobbies () {
-            const hobby = ["likes to read", "likes to draw", "makes jewelry", "journals", "collects trinkets", "plays dragonchess", "studies history", "likes to bake", "likes to cook", "refurnishes old furniture", "likes windowshopping", "plays an instrument", "writes poetry", "likes to play sports", "writes jokes", "loves barfights", "creates experiments", "beekeeps", "tattoos", "creates clothing", "loves to tinker", "likes to decorate", "likes to hike", "likes to swim", "woodcarves", "likes to play card games", "likes to knit", "teaches kids", "likes to gamble", "streetfights", "goes hunting", "likes to flirt", "practices magic", "likes stonecarving", "rides horses", "likes fortune telling", "likes to storytell","makes dolls", "studies the stars", "loves exercising", "loves dancing", "rock climbs", "loves to clean", "reads to children", "meditates"];
+            const hobby = ["likes to read", "likes to draw", "makes jewelry", "journals", "collects trinkets", "plays dragonchess", "studies history", "likes to bake", "likes to cook", "refurnishes old furniture", "likes windowshopping", "plays an instrument", "writes poetry", "likes to play sports", "writes jokes", "loves barfights", "creates experiments", "beekeeps", "likes to tattoo", "creates clothing", "loves to tinker", "likes to decorate", "likes to hike", "likes to swim", "woodcarves", "likes to play card games", "likes to knit", "teaches kids", "likes to gamble", "streetfights", "goes hunting", "likes to flirt", "practices magic", "likes stonecarving", "rides horses", "likes fortune telling", "likes to storytell","makes dolls", "studies the stars", "loves exercising", "loves dancing", "rock climbs", "loves to clean", "reads to children", "meditates"];
             const randomNumber = Math.floor(Math.random() * hobby.length);
             return hobby[randomNumber];
         }
