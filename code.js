@@ -40,8 +40,10 @@
             const skinColor = skinColorModifier(race);
             //Sets the first trait of the NPC
             const traitOne = adjectives();
+            //
+            const traitTwo = quirks();
             //Sets the attributes for the new random NPC instance
-            let randomNPC = new NPC(race, height, gender, hair, skinColor, traitOne);
+            let randomNPC = new NPC(race, height, gender, hair, skinColor, traitOne, traitTwo);
             console.log(randomNPC);
             console.log(raceIndex);
         })
@@ -165,10 +167,44 @@
         }
 
         function adjectives () {
-            const traits = ["brave", "cowardly", "snippy", "humble", "impatient", "patient", "nosey", "easygoing", "uptight", "funny", "serious", "aggressive", "arrogant", "cheerful", "grumpy", "artistic", "logical", "thick-headed", "daft", "boastful", "bright", "cunning", "calm", "suspicious", "cautious", "charming", "confident", "clever", "considerate", "cool", "cooperative", "wise", "cultured", "stubborn", "deranged", "dignified", "devoted", "eccentric", "emotional", "energetic", "friendly", "gentle", "meek", "modest", "quiet", "rational", "sensitive", "thoughtful", "philosophical","chatty", "level-headed", "perceptive", "dense", "diabolical","innocent", "corrupt", "offensive", "spiteful", "hateful", "wicked"];
+            const traits = ["brave", "cowardly", "snippy", "humble", "impatient", "patient", "nosey", "easygoing", "uptight", "funny", "serious", "aggressive", "arrogant", "cheerful", "grumpy", "artistic", "logical", "thick-headed", "daft", "boastful", "bright", "cunning", "calm", "suspicious", "cautious", "charming", "confident", "clever", "considerate", "cool", "cooperative", "wise", "cultured", "stubborn", "deranged", "dignified", "devoted", "eccentric", "emotional", "energetic", "friendly", "gentle", "meek", "modest", "quiet", "rational", "sensitive", "thoughtful", "philosophical","chatty", "level-headed", "perceptive", "dense", "diabolical","innocent", "corrupt", "offensive", "spiteful", "hateful", "wicked", "vain"];
 
             const index = Math.floor(Math.random() * traits.length);
             return traits[index];
         }
 
+        function quirks () {
+            const quirk = ["stutters", "has a lisp", "scarred", "blind", "deaf", "wears glasses", "fidgets", "has piercings", "sick", "talks loudly", "talks quietly", "foul breath", "sweats when lying", "breathes heavily", "talks slowly", "talks quickly", "breaks into song", "carries around a stuffed animal", "always sits facing the north", "clears their throat frequently", "laughs loudly", "sniffs frequently", "paces when in thought", "talks to themselves", "carries around snacks", "handles things delicately", "missing a limb", "carries around books", "sneezes when nervous", "germophobe", "hears voices", "has an invisible friend", "talks to plants", "talk to animals", "always seen drinking tea", "obsessed with symmetry", "narcoleptic", "always seen drinking alcohol", "carries around a sketchbook", "bites lips", "mute", "wears their heart on a sleeve"];
+            const index = Math.floor(Math.random() * quirk.length);
+            if (quirk[index] === "scarred") {
+                let completeQuirk;
+                let details = ["on the right eye", "on the left eye", "on the right cheek", "on the left cheek", "on the neck", "along their back", "along their arms", "on their torso", "along their legs"];
+                const detailsIndex = Math.floor(Math.random() * details.length);
+                completeQuirk = quirk[index] + " " + details[detailsIndex];
+                return completeQuirk;
+            }
+            else if (quirk[index] === "blind") {
+                let details = ["on the left eye", "on the right eye", "on both eyes"];
+                let completeQuirk;
+                const detailsIndex = Math.floor(Math.random() * details.length);
+                completeQuirk = quirk[index] + " " + details[detailsIndex];
+                return completeQuirk;
+            }
+            else if (quirk[index] === "deaf") {
+                let details = ["on the left ear", "on the right ear", "on both ears"];
+                let completeQuirk;
+                const detailsIndex = Math.floor(Math.random() * details.length);
+                completeQuirk = quirk[index] + " " + details[detailsIndex];
+                return completeQuirk;
+            }
+            else if (quirk[index] === "missing a limb") {
+                let details = ["left leg", "right leg", "left arm", "right arm", "both legs", "both arms"];
+                let completeQuirk;
+                const detailsIndex = Math.floor(Math.random() * details.length);
+                completeQuirk = quirk[index] + ": " + details[detailsIndex];
+                return completeQuirk;
+            }
+            const quirkIndex = Math.floor(Math.random() * quirk.length);
+            return quirk[quirkIndex];
+        }
 }
