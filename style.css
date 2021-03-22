@@ -24,7 +24,7 @@ body {
 
 .banner {
   padding: 30px;
-  margin: 40px;
+  margin: 20px;
   -webkit-box-shadow: 0px 0px 50px black;
           box-shadow: 0px 0px 50px black;
   color: white;
@@ -45,6 +45,16 @@ body {
   border: black 2px solid;
   -webkit-box-shadow: 0px 0px 50px black;
           box-shadow: 0px 0px 50px black;
+  padding: 10px;
+}
+
+.container ul div {
+  background-color: #462f7c;
+  font-size: 25px;
+  margin-right: 2vh;
+  border: black 2px solid;
+  padding: 3px;
+  width: 170px;
 }
 
 .container ul li {
@@ -56,14 +66,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.container ul li div {
-  background-color: #462f7c;
-  font-size: 30px;
-  margin-right: 2vh;
-  border: black 2px solid;
-  padding: 3px;
 }
 
 .container button {

@@ -19,7 +19,7 @@ body {
 
 .banner {
     padding: 30px;
-    margin: 40px;
+    margin: 20px;
     box-shadow: $boxShadow;
     color: $textColor;
     background-color: $accent;
@@ -31,18 +31,20 @@ body {
     ul {
         border: black 2px solid;
         box-shadow: $boxShadow;
+        padding: 10px;
+        div {
+                background-color: $accent;
+                font-size: 25px;
+                margin-right: 2vh;
+                border: black 2px solid;
+                padding: 3px;
+                width: 170px;
+        }
         li {
             display: flex;
             font-size: 25px;
             margin: 10px;
             align-items: center;
-            div {
-                background-color: $accent;
-                font-size: 30px;
-                margin-right: 2vh;
-                border: black 2px solid;
-                padding: 3px;
-            }
         }
     }
     button {
