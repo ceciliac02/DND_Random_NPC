@@ -1,12 +1,12 @@
-$accent: rgb(70, 47, 124);
-$textColor: white;
+$accent: rgb(83, 39, 104);
 $boxShadow: 0px 0px 50px black;
+$border: 5px;
 
 * {
     padding: 0;
     margin: 0;
     font-family: sans-serif;
-    color: white;
+    color: #ffffff;
 }
 
 body {
@@ -14,15 +14,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:rgb(43, 14, 54);
+    background: linear-gradient(to top, #21033d, #3c1861, #582e87, #7646af, #945fda);
 }
 
 .banner {
     padding: 30px;
     margin: 20px;
     box-shadow: $boxShadow;
-    color: $textColor;
     background-color: $accent;
+    border-radius: $border;
 }
 
 .container {
@@ -32,13 +32,16 @@ body {
         border: black 2px solid;
         box-shadow: $boxShadow;
         padding: 10px;
+        border-radius: $border;
         div {
                 background-color: $accent;
                 font-size: 25px;
                 margin-right: 2vh;
                 border: black 2px solid;
+                border-radius: $border;
                 padding: 3px;
                 width: 170px;
+                text-align: center;
         }
         li {
             display: flex;
@@ -51,11 +54,11 @@ body {
         margin: 20px;
         padding: 10px;
         background-color: $accent;
-        color: $textColor;
         font-weight: bold;
         font-size: 25px;
         border: none;
         box-shadow: $boxShadow;
+        border-radius: $border;
         cursor: pointer;
     }
 }

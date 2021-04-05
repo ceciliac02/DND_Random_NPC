@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: sans-serif;
-  color: white;
+  color: #ffffff;
 }
 
 body {
@@ -19,7 +19,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #2b0e36;
+  background: -webkit-gradient(linear, left bottom, left top, from(#21033d), color-stop(#3c1861), color-stop(#582e87), color-stop(#7646af), to(#945fda));
+  background: linear-gradient(to top, #21033d, #3c1861, #582e87, #7646af, #945fda);
 }
 
 .banner {
@@ -27,8 +28,8 @@ body {
   margin: 20px;
   -webkit-box-shadow: 0px 0px 50px black;
           box-shadow: 0px 0px 50px black;
-  color: white;
-  background-color: #462f7c;
+  background-color: #532768;
+  border-radius: 5px;
 }
 
 .container {
@@ -46,15 +47,18 @@ body {
   -webkit-box-shadow: 0px 0px 50px black;
           box-shadow: 0px 0px 50px black;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .container ul div {
-  background-color: #462f7c;
+  background-color: #532768;
   font-size: 25px;
   margin-right: 2vh;
   border: black 2px solid;
+  border-radius: 5px;
   padding: 3px;
   width: 170px;
+  text-align: center;
 }
 
 .container ul li {
@@ -71,13 +75,13 @@ body {
 .container button {
   margin: 20px;
   padding: 10px;
-  background-color: #462f7c;
-  color: white;
+  background-color: #532768;
   font-weight: bold;
   font-size: 25px;
   border: none;
   -webkit-box-shadow: 0px 0px 50px black;
           box-shadow: 0px 0px 50px black;
+  border-radius: 5px;
   cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
